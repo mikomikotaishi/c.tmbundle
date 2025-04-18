@@ -32,24 +32,26 @@
 			<string>#comments</string>
 		</dict>
 		<dict>
-			<key>include</key>
-			<string>source.c.platform</string>
-		</dict>
-		<dict>
 			<key>match</key>
-			<string>\b(break|case|continue|default|do|else|for|goto|if|_Pragma|return|switch|while)\b</string>
+			<string>\b(assert|break|case|continue|countof|_Countof|default|defined|do|else|for|goto|if|_Pragma|return|sizeof|static_assert|_Static_assert|switch|typeof|typeof_unqual|while)\b</string>
 			<key>name</key>
 			<string>keyword.control.c</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(asm|__asm__|auto|bool|_Bool|char|_Complex|double|enum|float|_Imaginary|int|long|short|signed|struct|typedef|union|unsigned|void)\b</string>
+			<string>\b(_Atomic|asm|__asm__|auto|_BitInt|bool|_Bool|char|complex|_Complex|_Decimal32|_Decimal64|_Decimal128|double|enum|float|fortran|__fortran__|_Generic|imaginary|_Imaginary|int|long|_Noreturn|short|signed|struct|typedef|union|unsigned|void)\b</string>
 			<key>name</key>
 			<string>storage.type.c</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(const|extern|register|restrict|static|volatile|inline)\b</string>
+			<string>\b(?:(?:u?int|char(?:8|16|32)|wchar|float(?:16|32|64|128)|bfloat16)_t|[uif](?:8|16|32|64|128)|bf16)\b</string>
+			<key>name</key>
+			<string>storage.typealias.c</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(alignas|_Alignas|alignof|_Alignof|const|constexpr|extern|register|restrict|static|thread_local|_Thread_local|volatile|inline)\b</string>
 			<key>name</key>
 			<string>storage.modifier.c</string>
 		</dict>
@@ -75,7 +77,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(NULL|true|false|TRUE|FALSE)\b</string>
+			<string>\b(NULL|nullptr|true|false|TRUE|FALSE)\b</string>
 			<key>name</key>
 			<string>constant.language.c</string>
 		</dict>
@@ -271,7 +273,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*#\s*(include|import)\b</string>
+			<string>^\s*#\s*(embed|include|import)\b</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -348,7 +350,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*#\s*(define|defined|elif|else|if|ifdef|ifndef|line|pragma|undef)\b</string>
+			<string>^\s*#\s*(define|defined|elif|elifdef|elifndef|else|if|ifdef|ifndef|line|pragma|undef)\b</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -392,7 +394,7 @@
     		       | (?= \s*[A-Za-z_] ) (?&lt;!&amp;&amp;)       (?&lt;=[*&amp;&gt;])   #  or type modifier before name
     		     )
     		)
-    		(\s*) (?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|[cr]?iterate|(?:::)?new|(?:::)?delete)\s*\()
+    		(\s*) (?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|assert|[cr]?iterate|(?:::)?new|(?:::)?delete)\s*\()
     		(
     			(?: [A-Za-z_][A-Za-z0-9_]*+ | :: )++ |                  # actual name
     			(?: (?&lt;=operator) (?: [-*&amp;&lt;&gt;=+!]+ | \(\) | \[\] ) )  # if it is a C++ operator
@@ -432,7 +434,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(const|final|override|noexcept)\b</string>
+					<string>\b(const|constexpr|final|override|noexcept)\b</string>
 					<key>name</key>
 					<string>storage.modifier.$1.c++</string>
 				</dict>
@@ -533,10 +535,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>source.c.platform#functions</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#c_function_call</string>
 				</dict>
 				<dict>
@@ -601,7 +599,7 @@
 			<key>match</key>
 			<string>(?x) (?: (?= \s )  (?:(?&lt;=else|new|return) | (?&lt;!\w)) (\s+))?
 			(\b 
-				(?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|[cr]?iterate|(?:::)?new|(?:::)?delete)\s*\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\b | :: )++                  # actual name
+				(?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|assert|[cr]?iterate|(?:::)?new|(?:::)?delete)\s*\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\b | :: )++                  # actual name
 			)
 			 \s*(\()</string>
 			<key>name</key>

@@ -8,6 +8,7 @@
 	<array>
 		<string>cc</string>
 		<string>cpp</string>
+		<string>cppm</string>
 		<string>cp</string>
 		<string>cxx</string>
 		<string>c++</string>
@@ -17,6 +18,8 @@
 		<string>hpp</string>
 		<string>hxx</string>
 		<string>h++</string>
+		<string>ixx</string>
+		<string>mxx</string>
 	</array>
 	<key>firstLineMatch</key>
 	<string>-\*- C\+\+ -\*-</string>
@@ -88,7 +91,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(catch|operator|try|throw|using)\b</string>
+			<string>\b(atomic_cancel|atomic_commit|atomic_noexcept|catch|contract_assert|operator|pre|post|synchronized|transaction_safe|transaction_safe_dynamic|try|throw|using)\b</string>
 			<key>name</key>
 			<string>keyword.control.c++</string>
 		</dict>
@@ -108,7 +111,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(this|nullptr)\b</string>
+			<string>\b(nullopt)\b</string>
+			<key>name</key>
+			<string>constant.language.c++</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(this)\b</string>
 			<key>name</key>
 			<string>variable.language.c++</string>
 		</dict>
@@ -126,21 +135,27 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(co_await|co_return|co_yield|and|and_eq|bitand|bitor|compl|not|not_eq|or|or_eq|typeid|xor|xor_eq)\b</string>
+			<string>\b(and|and_eq|bitand|bitor|co_await|co_return|co_yield|compl|not|not_eq|or|or_eq|typeid|xor|xor_eq)\b</string>
 			<key>name</key>
 			<string>keyword.operator.c++</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(class|wchar_t|char8_t|char16_t|char32_t)\b</string>
+			<string>\b(class)\b</string>
 			<key>name</key>
 			<string>storage.type.c++</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(consteval|constinit|constexpr|export|mutable|typename|thread_local|noexcept|final|override)\b</string>
+			<string>\b(alignas|alignof|consteval|constinit|decltype|final|mutable|noexcept|override|reflexpr|requires|typename)\b</string>
 			<key>name</key>
 			<string>storage.modifier.c++</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(import|export|module)\b</string>
+			<key>name</key>
+			<string>keyword.module.c++</string>
 		</dict>
 		<dict>
 			<key>begin</key>

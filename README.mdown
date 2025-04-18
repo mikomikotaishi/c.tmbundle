@@ -4,9 +4,9 @@ You can install this bundle in TextMate by opening the preferences and going to 
 
 # General
 
-* [Bundle Styleguide](http://kb.textmate.org/bundle_styleguide) — _before you make changes_
-* [Commit Styleguide](http://kb.textmate.org/commit_styleguide) — _before you send a pull request_
-* [Writing Bug Reports](http://kb.textmate.org/writing_bug_reports) — _before you report an issue_
+* [Bundle Styleguide](http://kb.textmate.org/bundle_styleguide) — _before you make changes_ (inactive, see [archive](https://web.archive.org/web/20180523122000/http://wiki.macromates.com/Bundles/StyleGuide))
+* [Commit Styleguide](http://kb.textmate.org/commit_styleguide) — _before you send a pull request_ (inactive)
+* [Writing Bug Reports](http://kb.textmate.org/writing_bug_reports) — _before you report an issue_ (inactive, see [here](https://github.com/textmate/textmate/wiki/writing-bug-report) for active page)
 
 # License
 
