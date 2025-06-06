@@ -32,6 +32,65 @@
 			<string>#comments</string>
 		</dict>
 		<dict>
+		    <key>begin</key>
+		    <string>\[\[</string>
+		    <key>beginCaptures</key>
+		    <dict>
+		        <key>0</key>
+		        <dict>
+		            <key>name</key>
+		            <string>punctuation.section.attribute.begin.c</string>
+		        </dict>
+		    </dict>
+		    <key>end</key>
+		    <string>\]\]</string>
+		    <key>endCaptures</key>
+		    <dict>
+		        <key>0</key>
+		        <dict>
+		            <key>name</key>
+		            <string>punctuation.section.attribute.end.c</string>
+		        </dict>
+		    </dict>
+		    <key>name</key>
+		    <string>meta.attribute.c</string>
+		    <key>patterns</key>
+		    <array>
+		        <dict>
+		            <key>match</key>
+		            <string>\b[a-zA-Z_][a-zA-Z_0-9]*\b</string>
+		            <key>name</key>
+		            <string>entity.name.annotation.c</string>
+		        </dict>
+		        <dict>
+		            <key>begin</key>
+		            <string>\(</string>
+		            <key>beginCaptures</key>
+		            <dict>
+		                <key>0</key>
+		                <dict>
+		                    <key>name</key>
+		                    <string>punctuation.section.group.begin.c</string>
+		                </dict>
+		            </dict>
+		            <key>end</key>
+		            <string>\)</string>
+		            <key>endCaptures</key>
+		            <dict>
+		                <key>0</key>
+		                <dict>
+		                    <key>name</key>
+		                    <string>punctuation.section.group.end.c</string>
+		                </dict>
+		            </dict>
+		            <key>contentName</key>
+		            <string>meta.attribute.arguments.c</string>
+		            <key>patterns</key>
+		            <array/>
+		        </dict>
+		    </array>
+		</dict>
+		<dict>
 			<key>include</key>
 			<string>source.c.platform</string>
 		</dict>
