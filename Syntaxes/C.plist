@@ -56,6 +56,23 @@
 			<string>storage.modifier.c</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>\[\[(?!=)\s*(?=[A-Za-z_])</string>
+			<key>comment</key>
+			<string>C/C++ attributes -- [[nodiscard]], [[deprecated("reason")]], [[using gnu: const]]</string>
+			<key>end</key>
+			<string>\]\]</string>
+			<key>name</key>
+			<string>constant.other.attribute.c</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$base</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
 			<key>comment</key>
 			<string>common C constant naming idiom -- kConstantVariable</string>
 			<key>match</key>
@@ -80,6 +97,14 @@
 			<string>\b(NULL|nullptr|true|false|TRUE|FALSE)\b</string>
 			<key>name</key>
 			<string>constant.language.c</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>ALL_CAPS constants</string>
+			<key>match</key>
+			<string>\b[A-Z][A-Z0-9_]+\b</string>
+			<key>name</key>
+			<string>constant.other.variable.all-caps.c</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -394,7 +419,7 @@
     		       | (?= \s*[A-Za-z_] ) (?&lt;!&amp;&amp;)       (?&lt;=[*&amp;&gt;])   #  or type modifier before name
     		     )
     		)
-    		(\s*) (?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|assert|[cr]?iterate|(?:::)?new|(?:::)?delete)\s*\()
+    		(\s*) (?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|assert|pre|post|contract_assert|[cr]?iterate|(?:::)?new|(?:::)?delete)\s*\()
     		(
     			(?: [A-Za-z_][A-Za-z0-9_]*+ | :: )++ |                  # actual name
     			(?: (?&lt;=operator) (?: [-*&amp;&lt;&gt;=+!]+ | \(\) | \[\] ) )  # if it is a C++ operator
@@ -437,6 +462,14 @@
 					<string>\b(const|constexpr|final|override|noexcept)\b</string>
 					<key>name</key>
 					<string>storage.modifier.$1.c++</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>C++ function contract specifiers</string>
+					<key>match</key>
+					<string>\b(pre|post)(?=\s*\()</string>
+					<key>name</key>
+					<string>keyword.control.c++</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -599,7 +632,7 @@
 			<key>match</key>
 			<string>(?x) (?: (?= \s )  (?:(?&lt;=else|new|return) | (?&lt;!\w)) (\s+))?
 			(\b 
-				(?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|assert|[cr]?iterate|(?:::)?new|(?:::)?delete)\s*\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\b | :: )++                  # actual name
+				(?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|assert|pre|post|contract_assert|[cr]?iterate|(?:::)?new|(?:::)?delete)\s*\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\b | :: )++                  # actual name
 			)
 			 \s*(\()</string>
 			<key>name</key>

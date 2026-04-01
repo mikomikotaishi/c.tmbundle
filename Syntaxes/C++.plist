@@ -74,6 +74,39 @@
 			<string>(::)\s*(template)\b</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>(\[\[=)(?!\])\s*((?:[A-Za-z_]\w*\s*::\s*)*+[A-Za-z_]\w*)?</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.annotation.begin.c++</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>C++ annotations -- [[=Inject]], [[=X&lt;1, 2, 3&gt;]], [[=Y("abc")]], [[=Y{1, 2, 3}]]</string>
+			<key>end</key>
+			<string>\]\]</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.annotation.end.c++</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>constant.other.annotation.c++</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$base</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
 			<key>include</key>
 			<string>source.c</string>
 		</dict>
